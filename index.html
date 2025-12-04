@@ -485,9 +485,160 @@
             opacity: 0.8;
         }
 
+        /* INVENTORY MANAGER */
+        .inventory-section {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .inventory-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            color: #fff;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(158, 158, 158, 0.3);
+            border: 2px solid #9e9e9e;
+            color: #fff;
+            padding: 12px 30px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(158, 158, 158, 0.5);
+        }
+
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .inventory-item {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .inventory-item-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+        }
+
+        .inventory-item-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .inventory-item-name {
+            font-weight: bold;
+            text-align: center;
+            font-size: 0.95em;
+        }
+
+        .inventory-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .inventory-qty-btn {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .inventory-qty-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .inventory-qty-display {
+            min-width: 40px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 2em;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(76, 175, 80, 0.5);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 35px rgba(76, 175, 80, 0.7);
+        }
+
+        .inventory-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #f44336;
+            color: #fff;
+            font-size: 0.5em;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 12px;
+            min-width: 24px;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .quest-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .inventory-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
 
             h1 {
@@ -496,6 +647,14 @@
 
             .quest-title {
                 font-size: 1.5em;
+            }
+
+            .floating-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5em;
+                bottom: 20px;
+                right: 20px;
             }
         }
     </style>
@@ -553,6 +712,21 @@
                 </div>
             </div>
         </div>
+
+        <!-- INVENTORY MANAGER -->
+        <div class="inventory-section" id="inventory-section" style="display:none;">
+            <h2 class="section-title">📦 Inventory Manager</h2>
+            <div class="inventory-controls">
+                <input type="text" id="inventory-search" placeholder="Search materials..." class="search-input">
+                <button class="btn btn-secondary" id="close-inventory-btn">✕ Close</button>
+            </div>
+            <div class="inventory-grid" id="inventory-grid"></div>
+        </div>
+
+        <!-- FLOATING INVENTORY BUTTON -->
+        <button class="floating-btn" id="open-inventory-btn" title="Open Inventory Manager">
+            📦<span class="inventory-count" id="inventory-count">0</span>
+        </button>
 
         <!-- QUEST SELECTION -->
         <div class="quest-selection" id="quest-selection">
@@ -1600,6 +1774,11 @@
             document.getElementById('back-quest-btn').addEventListener('click', backToQuests);
             document.getElementById('abandon-quest-btn').addEventListener('click', abandonQuest);
 
+            // Inventory actions
+            document.getElementById('open-inventory-btn').addEventListener('click', openInventory);
+            document.getElementById('close-inventory-btn').addEventListener('click', closeInventory);
+            document.getElementById('inventory-search').addEventListener('input', filterInventory);
+
             // Get player from URL parameter or localStorage
             const urlParams = new URLSearchParams(window.location.search);
             const playerParam = urlParams.get('player');
@@ -1623,17 +1802,20 @@
                     steve: {
                         activeQuest: null,
                         questProgress: {},
-                        workstations: gameData.playerStatus.steve.workstations
+                        workstations: gameData.playerStatus.steve.workstations,
+                        inventory: {}
                     },
                     alf: {
                         activeQuest: null,
                         questProgress: {},
-                        workstations: gameData.playerStatus.alf.workstations
+                        workstations: gameData.playerStatus.alf.workstations,
+                        inventory: {}
                     },
                     indie: {
                         activeQuest: null,
                         questProgress: {},
-                        workstations: gameData.playerStatus.indie.workstations
+                        workstations: gameData.playerStatus.indie.workstations,
+                        inventory: {}
                     }
                 };
                 savePlayerData();
@@ -1712,6 +1894,8 @@
                 document.getElementById('active-quest-section').style.display = 'none';
                 document.getElementById('quest-selection').style.display = 'block';
             }
+
+            updateInventoryCount();
         }
 
         function renderActiveQuest() {
@@ -1737,6 +1921,17 @@
             const objectivesHTML = level.requirements.map(req => {
                 const completed = isObjectiveCompleted(quest, req.item);
                 const iconPath = getIconPath(req.item);
+                const inInventory = player.inventory[req.item] || 0;
+                const needed = Math.max(0, req.quantity - inInventory);
+
+                let inventoryStatus = '';
+                if (inInventory > 0) {
+                    if (inInventory >= req.quantity) {
+                        inventoryStatus = `<span style="color: #4CAF50;">✓ Have ${inInventory}/${req.quantity}</span>`;
+                    } else {
+                        inventoryStatus = `<span style="color: #ff9800;">Need ${needed} more (have ${inInventory})</span>`;
+                    }
+                }
 
                 return `
                     <li class="objective-item ${req.type} ${completed ? 'completed' : ''}">
@@ -1755,6 +1950,7 @@
                             </div>
                             <div class="objective-source">
                                 ${getSourceText(req)}
+                                ${inventoryStatus ? `<br>${inventoryStatus}` : ''}
                             </div>
                         </div>
                     </li>
@@ -2042,6 +2238,100 @@
             if (req.type === 'buy' && req.seedCost) return `💰 Buy from Celeste (${req.seedCost} seeds)`;
             return '';
         }
+
+        // INVENTORY MANAGEMENT
+        function openInventory() {
+            document.getElementById('inventory-section').style.display = 'block';
+            document.getElementById('quest-selection').style.display = 'none';
+            document.getElementById('active-quest-section').style.display = 'none';
+            renderInventory();
+        }
+
+        function closeInventory() {
+            document.getElementById('inventory-section').style.display = 'none';
+            renderUI(); // Return to previous view
+        }
+
+        function renderInventory() {
+            const player = playerData[currentPlayer];
+            if (!player.inventory) player.inventory = {};
+
+            // Get all unique materials from game data
+            const allMaterials = new Set();
+
+            Object.values(gameData.workstations).forEach(station => {
+                station.levels.forEach(level => {
+                    level.requirements.forEach(req => {
+                        allMaterials.add(req.item);
+                    });
+                });
+            });
+
+            // Sort alphabetically
+            const sortedMaterials = Array.from(allMaterials).sort();
+
+            const inventoryHTML = sortedMaterials.map(material => {
+                const quantity = player.inventory[material] || 0;
+                const iconPath = getIconPath(material);
+
+                return `
+                    <div class="inventory-item">
+                        <div class="inventory-item-icon">
+                            ${iconPath ? `<img src="${iconPath}" alt="${material}">` : '📦'}
+                        </div>
+                        <div class="inventory-item-name">${material}</div>
+                        <div class="inventory-item-controls">
+                            <button class="inventory-qty-btn" onclick="updateInventory('${material}', -1)">−</button>
+                            <div class="inventory-qty-display">${quantity}</div>
+                            <button class="inventory-qty-btn" onclick="updateInventory('${material}', 1)">+</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('inventory-grid').innerHTML = inventoryHTML;
+            updateInventoryCount();
+        }
+
+        function updateInventory(material, delta) {
+            const player = playerData[currentPlayer];
+            if (!player.inventory) player.inventory = {};
+
+            const currentQty = player.inventory[material] || 0;
+            const newQty = Math.max(0, currentQty + delta);
+
+            if (newQty === 0) {
+                delete player.inventory[material];
+            } else {
+                player.inventory[material] = newQty;
+            }
+
+            savePlayerData();
+            renderInventory();
+        }
+
+        function updateInventoryCount() {
+            const player = playerData[currentPlayer];
+            const totalItems = Object.values(player.inventory || {}).reduce((sum, qty) => sum + qty, 0);
+            document.getElementById('inventory-count').textContent = totalItems;
+        }
+
+        function filterInventory() {
+            const searchTerm = document.getElementById('inventory-search').value.toLowerCase();
+            const items = document.querySelectorAll('.inventory-item');
+
+            items.forEach(item => {
+                const name = item.querySelector('.inventory-item-name').textContent.toLowerCase();
+                item.style.display = name.includes(searchTerm) ? 'flex' : 'none';
+            });
+        }
+
+        // Update inventory count on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (currentPlayer && playerData[currentPlayer]) {
+                updateInventoryCount();
+            }
+        });
     </script>
 </body>
 </html>
