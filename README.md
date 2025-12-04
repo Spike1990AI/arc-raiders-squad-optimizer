@@ -1,18 +1,29 @@
-# Arc Raiders - Squad Optimizer
+# Arc Raiders - Quest Planner
 
-**Smart Workshop Upgrade Planning with Cross-Reference Protection**
+**Mission-Based Workshop Progression System**
 
-A comprehensive tool for Steve, Alf, and Indie to track workstation upgrades, manage materials, and optimize their progression in Arc Raiders.
+A quest-driven tool for Steve, Alf, and Indie to optimize 10-minute focused farming runs in Arc Raiders.
+
+## 🎮 Quick Start (Each Player)
+
+Load the tool on your device and add URL parameter:
+
+- **Steve:** `index.html?player=steve`
+- **Alf:** `index.html?player=alf`
+- **Indie:** `index.html?player=indie`
+
+The tool remembers your player choice after first load. **Bookmark your URL!**
 
 ## 🎯 Features
 
-- **3-Player Support** - Individual progress tracking for Steve, Alf, and Indie
-- **Smart Recommendations** - Priority system highlights critical upgrades (Refiner Lv2!)
-- **Material Classification** - Every item tagged as FARM 🌾, CRAFT ✅, or BUY 💰
-- **Cross-Reference Protection** - Warns when materials are needed for multiple upgrades
-- **Keystone Detection** - Highlights Refiner as the critical unlock station
-- **Dependency Mapping** - Shows what crafting unlocks enable other upgrades
-- **LocalStorage Persistence** - Remembers your player selection
+- **Quest Card System** - Select upgrade as mission, track objectives with checkboxes
+- **Smart Run Optimization** - "While farming Wasps, also grab Hornets (spawn together)"
+- **10-Minute Focused Runs** - Go to X location → Farm Y + Z → Leave
+- **Enemy Spawn Intelligence** - Knows what spawns together (Fireballs + Ticks, etc.)
+- **Cross-Reference Warnings** - "Hornet Drivers also needed for Gear Bench Lv2 - SAVE FOR LATER"
+- **Material Classification** - FARM 🌾, CRAFT ✅, or BUY 💰
+- **Real Game Icons** - 33 item images from Arc Raiders Wiki
+- **Automatic Progress Saving** - LocalStorage per player per device
 
 ## 📊 What's Inside
 
@@ -34,11 +45,23 @@ A comprehensive tool for Steve, Alf, and Indie to track workstation upgrades, ma
 
 ## 🚀 How to Use
 
-1. **Select Your Player** - Click Steve, Alf, or Indie at the top
-2. **View Current Progress** - See all workstations with current levels
-3. **Check Next Upgrades** - See requirements for each next level
-4. **Follow Smart Recommendations** - Priority banner shows critical upgrades
-5. **Watch for Warnings** - Cross-reference alerts prevent wasting materials
+1. **Load Your URL** - Use `?player=steve` (or alf/indie) to set your profile
+2. **Select a Quest** - Click any available upgrade to make it your active quest
+3. **View Smart Suggestions** - See what else to farm while on this run
+4. **Go on Raid** - Follow the 10-minute focused run plan
+5. **Check Off Objectives** - Tick items as you collect them
+6. **Complete Quest** - Hit "Complete" when done to level up the workstation
+7. **Repeat** - Tool auto-suggests optimal next quests
+
+### Quest Workflow Example
+
+1. Select quest: **"Upgrade Gear Bench to Level 2"**
+2. Quest card shows:
+   - 📋 **Objectives:** 3× Power Cable, 5× Electrical Components, 5× Hornet Driver
+   - 💡 **Smart Suggestions:** "While farming Hornets, also grab Wasp Drivers (spawn together) - save for Gunsmith Lv2"
+   - 🎁 **Rewards:** Heavy Shield, Mk.2 augments
+3. Go to open areas → Farm Hornets + Wasps → Check off items → Leave
+4. Complete quest → Gear Bench levels up to Lv2 ✅
 
 ## 🔑 Key Strategy Insight
 
@@ -100,10 +123,13 @@ All data verified from official sources:
 
 ## 🔄 Future Enhancements
 
-- [ ] Download item icons from Arc Raiders Wiki (512×512 PNG)
-- [ ] Inventory tracking per player
+- [x] Quest card system with mission workflow
+- [x] Smart run optimization based on enemy spawns
+- [x] Cross-reference warnings for multi-use materials
+- [x] Download item icons from Arc Raiders Wiki (33/47 complete)
+- [ ] Inventory tracking after each run
+- [ ] Quest history/completed missions tracker
 - [ ] Seed counter and budget planning
-- [ ] Material farming checklist mode
 - [ ] Export progress as shareable link
 
 ## 📄 File Structure
@@ -126,6 +152,15 @@ arc-raiders-squad-optimizer/
 
 ---
 
-**Version:** 1.0
+**Version:** 3.1 (Quest System)
 **Last Updated:** 2025-12-04
 **License:** MIT
+
+## 🎯 What's New in v3.1
+
+- Quest card UI with mission-based progression
+- Smart suggestions engine with enemy spawn co-location
+- Cross-reference warnings for materials needed later
+- Back button to return to quest selection without losing progress
+- Per-player URLs for separate device loading
+- 33 real game icons from Arc Raiders Wiki
