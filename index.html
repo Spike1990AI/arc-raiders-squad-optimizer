@@ -2091,6 +2091,24 @@
             const questsHTML = quests.map(quest => {
                 const isCompleted = player.workstations[quest.stationKey] >= quest.targetLevel;
 
+                // Calculate progress if this is the active quest
+                let progressPercent = 0;
+                let progressHTML = '';
+
+                if (player.activeQuest &&
+                    player.activeQuest.stationKey === quest.stationKey &&
+                    player.activeQuest.targetLevel === quest.targetLevel) {
+                    progressPercent = calculateQuestProgressForCard(player.activeQuest, quest.stationKey, quest.targetLevel);
+                    progressHTML = `
+                        <div style="margin-top: 10px;">
+                            <div style="background: rgba(0,0,0,0.4); border-radius: 10px; height: 8px; overflow: hidden;">
+                                <div style="background: linear-gradient(90deg, #4CAF50, #8BC34A); height: 100%; width: ${progressPercent}%; transition: width 0.3s;"></div>
+                            </div>
+                            <div style="color: #4CAF50; margin-top: 5px; font-weight: bold;">🎯 ${progressPercent}% Complete</div>
+                        </div>
+                    `;
+                }
+
                 return `
                     <div class="quest-card ${isCompleted ? 'completed' : ''}"
                          onclick="selectQuest('${quest.stationKey}', ${quest.targetLevel})">
@@ -2103,6 +2121,7 @@
                             ${quest.requirementCount} objectives
                         </div>
                         ${isCompleted ? '<div style="color: #4CAF50; margin-top: 10px;">✅ Completed</div>' : ''}
+                        ${progressHTML}
                     </div>
                 `;
             }).join('');
@@ -2153,9 +2172,15 @@
             const quest = player.activeQuest;
 
             if (!quest.progress) quest.progress = {};
-            quest.progress[itemName] = !quest.progress[itemName];
 
+            // Toggle the objective
+            const currentState = quest.progress[itemName] || false;
+            quest.progress[itemName] = !currentState;
+
+            // Immediate save
             savePlayerData();
+
+            // Re-render to show updated progress
             renderActiveQuest();
         }
 
@@ -2168,6 +2193,19 @@
             const level = station.levels.find(l => l.level === quest.targetLevel);
 
             if (!level.requirements.length) return 0;
+
+            const completed = level.requirements.filter(req =>
+                isObjectiveCompleted(quest, req.item)
+            ).length;
+
+            return Math.round((completed / level.requirements.length) * 100);
+        }
+
+        function calculateQuestProgressForCard(quest, stationKey, targetLevel) {
+            const station = gameData.workstations[stationKey];
+            const level = station.levels.find(l => l.level === targetLevel);
+
+            if (!level || !level.requirements.length) return 0;
 
             const completed = level.requirements.filter(req =>
                 isObjectiveCompleted(quest, req.item)
