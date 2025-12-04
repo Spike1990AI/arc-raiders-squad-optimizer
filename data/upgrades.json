@@ -1,0 +1,448 @@
+{
+  "workstations": {
+    "gunsmith": {
+      "name": "Gunsmith",
+      "icon": "gunsmith.png",
+      "levels": [
+        {
+          "level": 1,
+          "requirements": [
+            {"item": "Metal Parts", "quantity": 20, "type": "farm"},
+            {"item": "Rubber Parts", "quantity": 30, "type": "farm"}
+          ],
+          "unlocks": ["Basic weapons"]
+        },
+        {
+          "level": 2,
+          "requirements": [
+            {"item": "Rusted Tools", "quantity": 3, "type": "farm", "source": "Mechanical POIs"},
+            {"item": "Mechanical Components", "quantity": 5, "type": "craft", "craftAt": "Refiner Lv1"},
+            {"item": "Wasp Driver", "quantity": 8, "type": "farm", "source": "Kill Wasps"}
+          ],
+          "unlocks": ["Better weapons"]
+        },
+        {
+          "level": 3,
+          "requirements": [
+            {"item": "Rusted Gear", "quantity": 3, "type": "farm", "source": "Mechanical POIs"},
+            {"item": "Advanced Mechanical Components", "quantity": 5, "type": "craft", "craftAt": "Refiner Lv2"},
+            {"item": "Sentinel Firing Core", "quantity": 4, "type": "farm", "source": "Kill Sentinels"}
+          ],
+          "unlocks": ["Bettina", "Renegade", "Hullcracker"]
+        }
+      ]
+    },
+    "gearBench": {
+      "name": "Gear Bench",
+      "icon": "gear-bench.png",
+      "levels": [
+        {
+          "level": 1,
+          "requirements": [
+            {"item": "Plastic Parts", "quantity": 25, "type": "farm"},
+            {"item": "Fabric", "quantity": 30, "type": "farm"}
+          ],
+          "unlocks": ["Light/Medium Shield", "Combat/Looting/Tactical Mk.1"]
+        },
+        {
+          "level": 2,
+          "requirements": [
+            {"item": "Power Cable", "quantity": 3, "type": "farm", "source": "Mechanical POIs"},
+            {"item": "Electrical Components", "quantity": 5, "type": "craft", "craftAt": "Refiner Lv1"},
+            {"item": "Hornet Driver", "quantity": 5, "type": "farm", "source": "Kill Hornets"}
+          ],
+          "unlocks": ["Heavy Shield", "Mk.2 augments"]
+        },
+        {
+          "level": 3,
+          "requirements": [
+            {"item": "Industrial Battery", "quantity": 3, "type": "farm", "source": "Loot containers"},
+            {"item": "Advanced Electrical Components", "quantity": 5, "type": "craft", "craftAt": "Refiner Lv2"},
+            {"item": "Bastion Cell", "quantity": 6, "type": "farm", "source": "Kill Bastions"}
+          ],
+          "unlocks": ["Looting Mk.3 (Cautious)"]
+        }
+      ]
+    },
+    "medicalLab": {
+      "name": "Medical Lab",
+      "icon": "medical-lab.png",
+      "levels": [
+        {
+          "level": 1,
+          "requirements": [
+            {"item": "Fabric", "quantity": 50, "type": "farm"},
+            {"item": "ARC Alloy", "quantity": 6, "type": "farm"}
+          ],
+          "unlocks": ["Herbal Bandage", "Shield Recharger", "Adrenaline Shot", "Bandage"]
+        },
+        {
+          "level": 2,
+          "requirements": [
+            {"item": "Cracked Bioscanner", "quantity": 2, "type": "farm", "source": "Loot containers"},
+            {"item": "Durable Cloth", "quantity": 5, "type": "craft", "craftAt": "Refiner Lv1"},
+            {"item": "Tick Pod", "quantity": 8, "type": "farm", "source": "Kill Ticks"}
+          ],
+          "unlocks": ["Sterilized Bandage", "Surge Shield Recharger"]
+        },
+        {
+          "level": 3,
+          "requirements": [
+            {"item": "Rusted Shut Medical Kit", "quantity": 3, "type": "farm", "source": "Loot containers"},
+            {"item": "Antiseptic", "quantity": 8, "type": "craft", "craftAt": "Refiner Lv2"},
+            {"item": "Surveyor Vault", "quantity": 5, "type": "farm", "source": "Kill Surveyors"}
+          ],
+          "unlocks": ["Vita Spray"]
+        }
+      ]
+    },
+    "explosives": {
+      "name": "Explosives Station",
+      "icon": "explosives.png",
+      "levels": [
+        {
+          "level": 1,
+          "requirements": [
+            {"item": "Chemicals", "quantity": 50, "type": "farm"},
+            {"item": "ARC Alloy", "quantity": 6, "type": "farm"}
+          ],
+          "unlocks": ["Gas Grenade", "Light Impact Grenade"]
+        },
+        {
+          "level": 2,
+          "requirements": [
+            {"item": "Synthesized Fuel", "quantity": 3, "type": "buy", "seedCost": 14},
+            {"item": "Crude Explosives", "quantity": 5, "type": "craft", "craftAt": "Refiner Lv1"},
+            {"item": "Pop Trigger", "quantity": 5, "type": "farm", "source": "Kill Pops"}
+          ],
+          "unlocks": ["Blaze Grenade"]
+        },
+        {
+          "level": 3,
+          "requirements": [
+            {"item": "Laboratory Reagents", "quantity": 3, "type": "farm", "source": "Loot containers"},
+            {"item": "Explosive Compound", "quantity": 5, "type": "farm", "source": "Loot containers"},
+            {"item": "Rocketeer Driver", "quantity": 3, "type": "farm", "source": "Kill Rocketeers"}
+          ],
+          "unlocks": ["Heavy Fuze Grenade", "Wolfpack"]
+        }
+      ]
+    },
+    "utility": {
+      "name": "Utility Station",
+      "icon": "utility.png",
+      "levels": [
+        {
+          "level": 1,
+          "requirements": [
+            {"item": "Plastic Parts", "quantity": 50, "type": "farm"},
+            {"item": "ARC Alloy", "quantity": 6, "type": "farm"}
+          ],
+          "unlocks": ["Barricade Kit", "Binoculars", "Door Blocker", "Remote Raider Flare", "Smoke Grenade"]
+        },
+        {
+          "level": 2,
+          "requirements": [
+            {"item": "Damaged Heat Sink", "quantity": 2, "type": "farm", "source": "Loot containers"},
+            {"item": "Electrical Components", "quantity": 5, "type": "craft", "craftAt": "Refiner Lv1"},
+            {"item": "Snitch Scanner", "quantity": 6, "type": "farm", "source": "Kill Snitches"}
+          ],
+          "unlocks": ["Lure Grenade", "Zipline"]
+        },
+        {
+          "level": 3,
+          "requirements": [
+            {"item": "Fried Motherboard", "quantity": 3, "type": "farm", "source": "Loot containers"},
+            {"item": "Advanced Electrical Components", "quantity": 5, "type": "craft", "craftAt": "Refiner Lv2"},
+            {"item": "Leaper Pulse Unit", "quantity": 4, "type": "farm", "source": "Kill Leapers (Bisons)"}
+          ],
+          "unlocks": ["Photoelectric Cloak", "Snap Hook", "Tagging Grenade"]
+        }
+      ]
+    },
+    "refiner": {
+      "name": "Refiner",
+      "icon": "refiner.png",
+      "keystone": true,
+      "levels": [
+        {
+          "level": 1,
+          "requirements": [
+            {"item": "Metal Parts", "quantity": 60, "type": "farm", "note": "NEEDS VERIFICATION"},
+            {"item": "ARC Powercell", "quantity": 5, "type": "farm", "note": "NEEDS VERIFICATION"}
+          ],
+          "unlocks": ["Mechanical Components", "Electrical Components", "Crude Explosives", "Durable Cloth"]
+        },
+        {
+          "level": 2,
+          "requirements": [
+            {"item": "Toaster", "quantity": 3, "type": "farm", "source": "Mechanical POIs"},
+            {"item": "ARC Motion Core", "quantity": 5, "type": "farm", "source": "Kill Surveyors/Probes"},
+            {"item": "Fireball Burner", "quantity": 8, "type": "farm", "source": "Kill Fireballs"}
+          ],
+          "unlocks": ["Advanced Mechanical Components", "Advanced Electrical Components", "Antiseptic", "ARC Circuitry"]
+        },
+        {
+          "level": 3,
+          "requirements": [
+            {"item": "Motor", "quantity": 3, "type": "farm", "source": "Loot containers"},
+            {"item": "ARC Circuitry", "quantity": 10, "type": "craft", "craftAt": "Refiner Lv2"},
+            {"item": "Bombardier Cell", "quantity": 6, "type": "farm", "source": "Kill Bombardiers"}
+          ],
+          "unlocks": ["Magnetic Accelerator", "Mod Components", "Power Rod"]
+        }
+      ]
+    },
+    "scrappy": {
+      "name": "Scrappy (The Rooster)",
+      "icon": "scrappy.png",
+      "levels": [
+        {
+          "level": 2,
+          "name": "Forager",
+          "requirements": [
+            {"item": "Dog Collar", "quantity": 1, "type": "farm", "source": "Residential areas"}
+          ],
+          "unlocks": ["Increased resource collection"]
+        },
+        {
+          "level": 3,
+          "name": "Scavenger",
+          "requirements": [
+            {"item": "Lemon", "quantity": 3, "type": "farm", "source": "Kick trees (Blue Gate NW Village)"},
+            {"item": "Apricot", "quantity": 3, "type": "farm", "source": "Kick trees (Blue Gate NW Village)"}
+          ],
+          "unlocks": ["+Chemicals", "+Rubber Parts to drops"]
+        },
+        {
+          "level": 4,
+          "name": "Treasure Hunter",
+          "requirements": [
+            {"item": "Prickly Pear", "quantity": 6, "type": "farm", "source": "Ground spawn"},
+            {"item": "Olive", "quantity": 6, "type": "farm", "source": "Kick trees (Blue Gate Olive Grove)"},
+            {"item": "Cat Bed", "quantity": 1, "type": "farm", "source": "Residential areas"}
+          ],
+          "unlocks": ["Improved haul rate"]
+        },
+        {
+          "level": 5,
+          "name": "Master Hoarder",
+          "requirements": [
+            {"item": "Olive", "quantity": 6, "type": "farm", "source": "Kick trees (Blue Gate Olive Grove)"},
+            {"item": "Mushroom", "quantity": 6, "type": "farm", "source": "Ground spawn"},
+            {"item": "Very Comfortable Pillow", "quantity": 3, "type": "farm", "source": "Residential areas"}
+          ],
+          "unlocks": ["Maximum resource capacity"]
+        }
+      ]
+    }
+  },
+  "refinerRecipes": {
+    "level1": [
+      {
+        "output": "Mechanical Components",
+        "ingredients": [
+          {"item": "Metal Parts", "quantity": 7},
+          {"item": "Rubber Parts", "quantity": 3}
+        ]
+      },
+      {
+        "output": "Electrical Components",
+        "ingredients": [
+          {"item": "Plastic Parts", "quantity": 8},
+          {"item": "Rubber Parts", "quantity": 4}
+        ]
+      },
+      {
+        "output": "Crude Explosives",
+        "ingredients": [
+          {"item": "Chemicals", "quantity": "TBD"}
+        ]
+      },
+      {
+        "output": "Durable Cloth",
+        "ingredients": [
+          {"item": "Fabric", "quantity": "TBD"}
+        ]
+      }
+    ],
+    "level2": [
+      {
+        "output": "Advanced Mechanical Components",
+        "ingredients": [
+          {"item": "Mechanical Components", "quantity": "TBD"},
+          {"item": "ARC Alloy", "quantity": "TBD"}
+        ]
+      },
+      {
+        "output": "Advanced Electrical Components",
+        "ingredients": [
+          {"item": "Electrical Components", "quantity": "TBD"},
+          {"item": "ARC Alloy", "quantity": "TBD"}
+        ]
+      },
+      {
+        "output": "Antiseptic",
+        "ingredients": [
+          {"item": "Chemicals", "quantity": "TBD"},
+          {"item": "Durable Cloth", "quantity": "TBD"}
+        ]
+      },
+      {
+        "output": "ARC Circuitry",
+        "ingredients": [
+          {"item": "ARC Powercell", "quantity": "TBD"},
+          {"item": "Electrical Components", "quantity": "TBD"}
+        ]
+      },
+      {
+        "output": "Heavy Gun Parts",
+        "ingredients": [
+          {"item": "Simple Gun Parts", "quantity": 4}
+        ]
+      }
+    ],
+    "level3": [
+      {
+        "output": "Magnetic Accelerator",
+        "ingredients": [{"item": "TBD", "quantity": "TBD"}]
+      },
+      {
+        "output": "Mod Components",
+        "ingredients": [{"item": "TBD", "quantity": "TBD"}]
+      },
+      {
+        "output": "Power Rod",
+        "ingredients": [{"item": "TBD", "quantity": "TBD"}]
+      }
+    ]
+  },
+  "celesteShop": {
+    "basicMaterials": [
+      {"item": "Chemicals", "seeds": 1, "stock": "unlimited"},
+      {"item": "Fabric", "seeds": 1, "stock": "unlimited"},
+      {"item": "Metal Parts", "seeds": 1, "stock": "unlimited"},
+      {"item": "Plastic Parts", "seeds": 1, "stock": "unlimited"},
+      {"item": "Rubber Parts", "seeds": 1, "stock": "unlimited"}
+    ],
+    "commonMaterials": [
+      {"item": "Wires", "seeds": 4, "stock": 10},
+      {"item": "Battery", "seeds": 5, "stock": 10},
+      {"item": "Great Mullein", "seeds": 5, "stock": 10},
+      {"item": "Canister", "seeds": 6, "stock": 10},
+      {"item": "Duct Tape", "seeds": 6, "stock": 10},
+      {"item": "Magnet", "seeds": 6, "stock": 10},
+      {"item": "Oil", "seeds": 6, "stock": 10},
+      {"item": "Steel Spring", "seeds": 6, "stock": 10, "helpsWith": "Craft Mechanical Components at Refiner"}
+    ],
+    "midTier": [
+      {"item": "Simple Gun Parts", "seeds": 7, "stock": 5, "helpsWith": "Weapon upgrades"},
+      {"item": "Moss", "seeds": 10, "stock": 5},
+      {"item": "Processor", "seeds": 10, "stock": 5, "helpsWith": "Mk.3 augments"},
+      {"item": "Rope", "seeds": 10, "stock": 5},
+      {"item": "Sensors", "seeds": 10, "stock": 5, "helpsWith": "Raider Keys, Wolfpack blueprints"},
+      {"item": "Speaker Component", "seeds": 10, "stock": 5},
+      {"item": "Syringe", "seeds": 10, "stock": 5},
+      {"item": "Voltage Converter", "seeds": 10, "stock": 5},
+      {"item": "Synthesized Fuel", "seeds": 14, "stock": 5, "helpsWith": "Explosives Lv2 (need 3)"}
+    ],
+    "gunParts": [
+      {"item": "Light Gun Parts", "seeds": 15, "stock": 3},
+      {"item": "Medium Gun Parts", "seeds": 15, "stock": 3},
+      {"item": "Heavy Gun Parts", "seeds": 15, "stock": 3}
+    ],
+    "premium": [
+      {"item": "Exodus Modules", "seeds": 55, "stock": 1, "helpsWith": "High-tier weapon blueprints"},
+      {"item": "Complex Gun Parts", "seeds": 60, "stock": 1, "helpsWith": "Premium weapon blueprints"}
+    ]
+  },
+  "crossReferences": {
+    "multipleUse": [
+      {
+        "material": "Electrical Components",
+        "usedBy": ["Gear Bench Lv2 (5)", "Utility Lv2 (5)"],
+        "totalNeeded": 10,
+        "canCraft": true,
+        "craftAt": "Refiner Lv1"
+      },
+      {
+        "material": "Advanced Electrical Components",
+        "usedBy": ["Gear Bench Lv3 (5)", "Utility Lv3 (5)"],
+        "totalNeeded": 10,
+        "canCraft": true,
+        "craftAt": "Refiner Lv2"
+      },
+      {
+        "material": "ARC Alloy",
+        "usedBy": ["Medical Lv1 (6)", "Explosives Lv1 (6)", "Utility Lv1 (6)"],
+        "totalNeeded": 18,
+        "canCraft": false
+      },
+      {
+        "material": "Fabric",
+        "usedBy": ["Medical Lv1 (50)", "Gear Bench Lv1 (30)"],
+        "totalNeeded": 80,
+        "canCraft": false
+      },
+      {
+        "material": "Plastic Parts",
+        "usedBy": ["Utility Lv1 (50)", "Gear Bench Lv1 (25)"],
+        "totalNeeded": 75,
+        "canCraft": false
+      }
+    ]
+  },
+  "dependencyChains": {
+    "refinerLv1": {
+      "unlocks": [
+        {"material": "Mechanical Components", "enables": "Gunsmith Lv2"},
+        {"material": "Electrical Components", "enables": "Gear Bench Lv2, Utility Lv2"},
+        {"material": "Crude Explosives", "enables": "Explosives Lv2"},
+        {"material": "Durable Cloth", "enables": "Medical Lv2"}
+      ]
+    },
+    "refinerLv2": {
+      "unlocks": [
+        {"material": "Advanced Mechanical Components", "enables": "Gunsmith Lv3"},
+        {"material": "Advanced Electrical Components", "enables": "Gear Bench Lv3, Utility Lv3"},
+        {"material": "Antiseptic", "enables": "Medical Lv3"},
+        {"material": "ARC Circuitry", "enables": "Refiner Lv3"}
+      ]
+    }
+  },
+  "playerStatus": {
+    "steve": {
+      "workstations": {
+        "gunsmith": 1,
+        "gearBench": 1,
+        "medicalLab": 1,
+        "explosives": 1,
+        "utility": 1,
+        "refiner": 1,
+        "scrappy": 3
+      }
+    },
+    "alf": {
+      "workstations": {
+        "gunsmith": 1,
+        "gearBench": 1,
+        "medicalLab": 1,
+        "explosives": 1,
+        "utility": 1,
+        "refiner": 1,
+        "scrappy": 1
+      }
+    },
+    "indie": {
+      "workstations": {
+        "gunsmith": 1,
+        "gearBench": 1,
+        "medicalLab": 1,
+        "explosives": 1,
+        "utility": 1,
+        "refiner": 1,
+        "scrappy": 1
+      }
+    }
+  }
+}
